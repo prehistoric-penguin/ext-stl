@@ -122,8 +122,18 @@ void swap(FixedForwardList<T, Capacity>& lhs,
 template <typename T, size_t Capacity1, size_t Capacity2>
 inline bool operator==(const FixedForwardList<T, Capacity1>& lhs,
                        const FixedForwardList<T, Capacity2>& rhs) {
-  return lhs.size() == rhs.size() &&
-         std::equal(std::begin(lhs), std::end(lhs), std::begin(rhs));
+  auto litr = lhs.cbegin();
+  auto ritr = rhs.cbegin();
+  while (litr != lhs.cend() && ritr != rhs.cend()) {
+    if (*litr != *ritr) return false;
+    ++litr;
+    ++ritr;
+  }
+  if (litr == lhs.cend() && ritr == rhs.cend()) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 template <typename T, size_t Capacity1, size_t Capacity2>
