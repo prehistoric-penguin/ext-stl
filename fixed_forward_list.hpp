@@ -129,11 +129,8 @@ inline bool operator==(const FixedForwardList<T, Capacity1>& lhs,
     ++litr;
     ++ritr;
   }
-  if (litr == lhs.cend() && ritr == rhs.cend()) {
-    return true;
-  } else {
-    return false;
-  }
+
+  return litr == lhs.cend() && ritr == rhs.cend();
 }
 
 template <typename T, size_t Capacity1, size_t Capacity2>
