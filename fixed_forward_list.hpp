@@ -3,12 +3,16 @@
 #include <algorithm>
 #include "stack_allocator.hpp"
 
+// XXX
+template <typename T>
+using __std_forward_list_node_t = std::_Fwd_list_node<T>;
+
 template <typename T, size_t Capacity>
 class FixedForwardList
     : public std::forward_list<
-          T, StackAllocator<std::_Fwd_list_node<T>, Capacity>> {
+          T, StackAllocator<__std_forward_list_node_t<T>, Capacity>> {
  public:
-  using Allocator = StackAllocator<std::_List_node<T>, Capacity>;
+  using Allocator = StackAllocator<__std_forward_list_node_t<T>, Capacity>;
   using BaseType = std::forward_list<T, Allocator>;
   using ReservsedMemoryType = typename Allocator::ReservedMemory;
 
@@ -20,17 +24,12 @@ class FixedForwardList
   using allocator_type = typename BaseType::allocator_type;
   using pointer = typename BaseType::pointer;
   using const_pointer = typename BaseType::const_pointer;
-  using reverse_iterator = typename BaseType::reverse_iterator;
-  using const_reverse_iterator = typename BaseType::const_reverse_iterator;
 
   using BaseType::assign;
-  using BaseType::size;
   using BaseType::begin;
   using BaseType::end;
-  using BaseType::push_back;
 
- private:
-  FixedForwardList() : BaseType(&stack_data_) {}
+  FixedForwardList() : BaseType(Allocator(&stack_data_)) {}
 
   explicit FixedForwardList(size_type count, const T& value = T())
       : FixedForwardList() {
@@ -107,8 +106,11 @@ class FixedForwardList
 
   FixedForwardList& operator=(std::forward_list<T>&& flist) {
     assign(flist.begin(), flist.end());
-    flsit.clear();
+    flist.clear();
   }
+
+ private:
+  ReservsedMemoryType stack_data_;
 };
 
 template <typename T, size_t Capacity>
