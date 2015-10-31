@@ -146,7 +146,7 @@ inline bool operator<(
     const FixedMap<KeyType, ValueType, Capacity1, Compare>& lhs,
     const FixedMap<KeyType, ValueType, Capacity2, Compare>& rhs) {
   return std::lexicographical_compare(std::begin(lhs), std::end(lhs),
-                                      std::begin(rhs), std::begin(rhs));
+                                      std::begin(rhs), std::end(rhs));
 }
 
 template <typename KeyType, typename ValueType, size_t Capacity1,
@@ -316,7 +316,7 @@ inline bool operator<(
     const FixedMultiMap<KeyType, ValueType, Capacity1, Compare>& lhs,
     const FixedMultiMap<KeyType, ValueType, Capacity2, Compare>& rhs) {
   return std::lexicographical_compare(std::begin(lhs), std::end(lhs),
-                                      std::begin(rhs), std::begin(rhs));
+                                      std::begin(rhs), std::end(rhs));
 }
 
 template <typename KeyType, typename ValueType, size_t Capacity1,

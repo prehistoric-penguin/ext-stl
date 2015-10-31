@@ -109,6 +109,42 @@ class FixedForwardList
     flist.clear();
   }
 
+  void swap(FixedForwardList& other) {
+    if (this != &other)
+      FixedSwap(*this, other);
+  }
+
+  // TODO add this series of operations
+  /*
+  void merge(FixedForwardList& other);
+
+  void merge(FixedForwardList&& other);
+
+  template <typename Compare>
+  void merge(FixedForwardList& other, Compare comp);
+
+  template <typename Compare>
+  void merge(FixedForwardList&& other, Compare comp);
+
+  void splice_after(const_iterator pos,
+                    FixedForwardList& other);
+  
+  void splice_after(const_iterator pos,
+                    FixedForwardList&& other);
+
+  void splice_after(const_iterator pos, FixedForwardList& other,
+                    const_iterator it);
+
+  void splice_after(const_iterator pos, FixedForwardList&& other,
+                    const_iterator it);
+
+  void splice_after(const_iterator pos, FixedForwardList& other,
+                    const_iterator first, const_iterator last);
+
+  void splice_after(const_iterator pos, FixedForwardList&& other,
+                    const_iterator first, const_iterator last);
+  */
+
  private:
   ReservsedMemoryType stack_data_;
 };
@@ -143,7 +179,7 @@ template <typename T, size_t Capacity1, size_t Capacity2>
 inline bool operator<(const FixedForwardList<T, Capacity1>& lhs,
                       const FixedForwardList<T, Capacity2>& rhs) {
   return std::lexicographical_compare(std::begin(lhs), std::end(lhs),
-                                      std::begin(rhs), std::begin(rhs));
+                                      std::begin(rhs), std::end(rhs));
 }
 
 template <typename T, size_t Capacity1, size_t Capacity2>

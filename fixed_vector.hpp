@@ -130,7 +130,7 @@ template <typename T, size_t Capacity1, size_t Capacity2>
 inline bool operator<(const FixedVector<T, Capacity1>& lhs,
                       const FixedVector<T, Capacity2>& rhs) {
   return std::lexicographical_compare(std::begin(lhs), std::end(lhs),
-                                      std::begin(rhs), std::begin(rhs));
+                                      std::begin(rhs), std::end(rhs));
 }
 
 template <typename T, size_t Capacity1, size_t Capacity2>
