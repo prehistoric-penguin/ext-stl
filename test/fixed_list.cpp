@@ -1,9 +1,10 @@
+#include "fixed_list.hpp"
+
 #include <vector>
 #include <list>
 #include <memory>
 #include <iostream>
 #include <algorithm>
-#include "fixed_list.hpp"
 #include "gtest/gtest.h"
 
 TEST(FixedList, general) {

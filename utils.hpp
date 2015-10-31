@@ -5,9 +5,10 @@
 // default value is one memory page
 // when comes to fixedswap, another
 // one page memory will be used
-constexpr size_t kMaxStackUsage = 4 * 1024;
 template <typename T>
 void FixedSwap(T& a, T& b) {
+  constexpr size_t kMaxStackUsage = 4 * 1024;
+
   if (sizeof(a) < kMaxStackUsage) {
     T tmp(a);
     a = b;

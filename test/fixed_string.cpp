@@ -1,8 +1,9 @@
+#include "fixed_string.hpp"
+
 #include <vector>
 #include <memory>
 #include <iostream>
 #include <algorithm>
-#include "fixed_string.hpp"
 #include "gtest/gtest.h"
 
 TEST(FixedString, general) {

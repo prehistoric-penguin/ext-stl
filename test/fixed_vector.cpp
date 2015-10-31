@@ -1,8 +1,9 @@
+#include "fixed_vector.hpp"
+
 #include <vector>
 #include <memory>
 #include <iostream>
 #include <algorithm>
-#include "fixed_vector.hpp"
 #include "gtest/gtest.h"
 
 TEST(FixedVector, general) {

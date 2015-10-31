@@ -1,7 +1,8 @@
+#include "fixed_set.hpp"
+
 #include <vector>
 #include <memory>
 #include <algorithm>
-#include "fixed_set.hpp"
 #include "gtest/gtest.h"
 
 static constexpr size_t kMax = 100;

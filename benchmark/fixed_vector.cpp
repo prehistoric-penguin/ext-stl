@@ -1,8 +1,9 @@
+#include "fixed_vector.hpp"
+
 #include <vector>
 #include <iostream>
 #include <algorithm>
 #include "stop_watch.hpp"
-#include "fixed_vector.hpp"
 
 constexpr int kRunLoops = 1000000;
 constexpr int kVecSize = 100;
@@ -130,4 +131,6 @@ int main() {
   bench_iota();
   bench_sum();
   bench_push();
+
+  return 0;
 }
