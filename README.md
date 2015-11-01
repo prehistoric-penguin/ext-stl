@@ -1,6 +1,26 @@
 ## ext-stl
 
-### Encapsulation for STL container, to be cache friendly for small objects
+Encapsulation for STL container, to be cache friendly for small objects
+
+### Build
+
+build for debug:
+
+```shell
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+```
+
+build for benchmark:
+
+```shell
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+```
+
+Only tested on G++ 4.8, I think that higher version of g++ will be also ok to compile.
 
 ### Reference
 
