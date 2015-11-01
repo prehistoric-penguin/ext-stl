@@ -30,9 +30,7 @@ TEST(FixedForwardList, assign) {
   ListType flist;
   flist.assign(std::begin(vec), std::end(vec));
 
-  EXPECT_TRUE(std::equal(std::begin(vec), std::end(vec),
-                         std::begin(flist)));
-
+  EXPECT_TRUE(std::equal(std::begin(vec), std::end(vec), std::begin(flist)));
 }
 
 TEST(FixedForwardList, iterators) {
@@ -40,10 +38,8 @@ TEST(FixedForwardList, iterators) {
   EXPECT_TRUE(flist.empty());
   auto itr = flist.before_begin();
 
-  for (int i : vec)
-    flist.insert_after(itr, i);
-  EXPECT_TRUE(std::equal(std::begin(flist), std::end(flist),
-                         vec.rbegin()));
+  for (int i : vec) flist.insert_after(itr, i);
+  EXPECT_TRUE(std::equal(std::begin(flist), std::end(flist), vec.rbegin()));
 }
 
 TEST(FixedForwardList, modifiers) {
@@ -55,14 +51,11 @@ TEST(FixedForwardList, modifiers) {
   EXPECT_EQ(flist.front(), 0);
 
   ListType flist2;
-  for (int i : vec)
-    flist2.push_front(i);
-  EXPECT_TRUE(std::equal(std::begin(flist2), std::end(flist2),
-                         vec.rbegin()));
+  for (int i : vec) flist2.push_front(i);
+  EXPECT_TRUE(std::equal(std::begin(flist2), std::end(flist2), vec.rbegin()));
 
   auto vec_size = vec.size();
-  while (vec_size-- > 0)
-    flist2.pop_front();
+  while (vec_size-- > 0) flist2.pop_front();
   EXPECT_TRUE(flist2.empty());
 
   flist2.push_front(0);
@@ -70,8 +63,7 @@ TEST(FixedForwardList, modifiers) {
 
   ListType flist3(std::begin(vec), std::end(vec));
   flist.swap(flist3);
-  EXPECT_TRUE(std::equal(std::begin(flist), std::end(flist),
-                         vec.rbegin()));
+  EXPECT_TRUE(std::equal(std::begin(flist), std::end(flist), vec.rbegin()));
 
   flist.resize(kMax / 2);
   EXPECT_TRUE(std::equal(std::begin(vec), std::next(std::begin(vec), kMax / 2),
@@ -82,15 +74,13 @@ TEST(FixedForwardList, operations) {
   ListType flist;
   flist.assign(std::begin(vec), std::end(vec));
 
-  flist.remove_if([](int val) {
-                  return val % 2 == 0;
-                  });
+  flist.remove_if([](int val) { return val % 2 == 0; });
   std::vector<int> vec_tmp;
   std::copy_if(std::begin(vec), std::end(vec), std::back_inserter(vec_tmp),
                [](int val) { return val % 2 != 0; });
 
-  EXPECT_TRUE(std::equal(std::begin(vec_tmp), std::end(vec_tmp),
-                         std::begin(flist)));
+  EXPECT_TRUE(
+      std::equal(std::begin(vec_tmp), std::end(vec_tmp), std::begin(flist)));
 
   ListType flist2;
   flist2.assign(std::begin(vec), std::end(vec));
@@ -98,16 +88,18 @@ TEST(FixedForwardList, operations) {
   EXPECT_TRUE(std::equal(std::begin(flist2), std::end(flist2), vec.rbegin()));
 
   std::vector<int> vec_tmp2 = vec;
-  vec_tmp2.erase(std::unique(std::begin(vec_tmp2), std::end(vec_tmp2)), std::end(vec_tmp2));
+  vec_tmp2.erase(std::unique(std::begin(vec_tmp2), std::end(vec_tmp2)),
+                 std::end(vec_tmp2));
   ListType flist3;
   flist3.assign(std::begin(vec), std::end(vec));
   flist3.unique();
-  EXPECT_TRUE(std::equal(std::begin(flist3), std::end(flist3), std::begin(vec_tmp2)));
-
+  EXPECT_TRUE(
+      std::equal(std::begin(flist3), std::end(flist3), std::begin(vec_tmp2)));
 
   flist3.sort();
   std::sort(std::begin(vec_tmp2), std::end(vec_tmp2));
-  EXPECT_TRUE(std::equal(std::begin(flist3), std::end(flist3), std::begin(vec_tmp2)));
+  EXPECT_TRUE(
+      std::equal(std::begin(flist3), std::end(flist3), std::begin(vec_tmp2)));
 }
 
 TEST(FixedForwardList, global_operator) {
