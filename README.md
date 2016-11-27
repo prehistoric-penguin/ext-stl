@@ -20,7 +20,7 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 ```
 
-Only tested on G++ 4.8, I think that higher version of g++ will be also ok to compile.
+Only tested on G++ 4.8, higher version of g++ will be also ok to compile.
 
 ### Reference
 
